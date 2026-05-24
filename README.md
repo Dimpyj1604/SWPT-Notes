@@ -1,8 +1,8 @@
 # SWPT-Notes
 
-Personal notes from working through HTB Academy's Senior Web Penetration Tester (SWPT) path. These cover the harder modules — the ones where you actually have to think, chain bugs, and work through rabbit holes before something clicks.
+Personal study notes compiled while working through advanced web application security concepts. These cover attack techniques, underlying mechanics, and methodology — written to reinforce my own understanding and share knowledge with the security community.
 
-I'm writing these up to help other people who get stuck on the same things I did. Everything here is technique-focused: why the attack works, what the thought process was, and what to watch out for. No flags — figure those out yourself.
+All content reflects publicly documented attack classes. No flags, no direct answers. If you're learning these topics, use these as a supplement — not a shortcut. Do the labs yourself.
 
 ---
 
