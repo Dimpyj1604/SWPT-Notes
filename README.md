@@ -24,6 +24,7 @@ All content reflects publicly documented attack classes. No flags, no direct ans
 | 12 | [Advanced Injections](./12-Advanced-Injections/) | wkhtmltopdf server-side XSS, LFI via file://, iframe SSRF, XPath blind boolean injection |
 | 13 | [LDAP Injection](./13-LDAP-Injection/) | Blind LDAP filter injection, OR-clause attribute exfiltration, boolean oracle |
 | 14 | [Advanced SQL Injection](./14-Advanced-SQL-Injection/) | PostgreSQL internals, psql/pgAdmin4, schema enumeration, advanced injection techniques |
+| 15 | [Intro to Deserialization Attacks](./15-Intro-Deserialization-Attacks/) | PHP serialize format, Python Pickle protocol 0 opcodes, unsafe deserialization primitives |
 
 ---
 
