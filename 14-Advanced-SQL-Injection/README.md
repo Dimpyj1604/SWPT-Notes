@@ -6,3 +6,4 @@ PostgreSQL-specific injection techniques from a whitebox approach. Covers the da
 
 - [PostgreSQL Basics](./postgresql-basics.md) — psql/pgAdmin4 setup, schema enumeration, query patterns for common recon tasks
 - [Decompiling Java JARs](./decompiling-java-jars.md) — Fernflower + JD-GUI, Spring Boot JAR structure, quick config extraction without full decompile
+- [Searching for SQL Injection](./searching-for-strings.md) — grep RegEx patterns, parameterized vs concatenated queries, what blocks injection (hashing, encoding), second-order injection via stored email
