@@ -9,3 +9,4 @@ Covers serialization fundamentals across PHP and Python (Pickle), leading into d
 - [RCE via Magic Methods](./rce-magic-methods.md) — `__wakeup()` shell_exec injection, finding flag paths, curl timeout behavior, Laravel session quirks
 - [PHAR Deserialization](./phar-deserialization.md) — arbitrary upload + phar:// path to file_exists() → metadata deserialized → RCE, namespace escape for \Phar
 - [PHPGGC](./phpggc.md) — pre-built gadget chains for Laravel/Symfony/etc., direct import vs PHAR variant, chain version selection
+- [Python Pickle Object Injection](./python-object-injection.md) — forge admin role cookie, module path must match server (util.auth.Session not __main__.Session)
