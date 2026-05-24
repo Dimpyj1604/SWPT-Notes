@@ -76,8 +76,11 @@ String sql3 = "INSERT INTO users (name, username, email, password) VALUES ('"
 The function receives 5 form params: `name`, `username`, `email`, `password`, `repeatPassword`.
 
 - `name`, `username`, `email` — concatenated raw into the INSERT, all injectable.
-- `password` — bcrypt-hashed before insertion (`passwordHash`). The hash output (`$2a$10$...`) is fixed-format and not injectable. However, `password` at least reaches the query (as the hash).
-- `repeatPassword` — only used for the `password.equals(repeatPassword)` equality check, then **discarded entirely**. It never reaches the INSERT query at all — cannot be used for exploitation.
+- `passwordHash` — the LOCAL variable that actually appears in the INSERT string concat. It is the bcrypt output of `password` (`$2a$12$...` fixed format, alphanumeric + `$./`). **Cannot be used for exploitation** — the hash output contains no SQL-injectable characters regardless of what is submitted as `password`.
+- `password` — the REQUEST PARAMETER. It never touches the SQL string directly; it becomes `passwordHash` first. Controlling `password` input does not yield SQL injection because the hash transform is one-way and fixed-format.
+- `repeatPassword` — only used for the `password.equals(repeatPassword)` equality check, then **discarded entirely**. It never reaches the INSERT query at all.
+
+> **Key distinction:** The question "which variable cannot be used for exploitation?" points to `passwordHash` — not `password`. The request param `password` is irrelevant to the SQL because only `passwordHash` (the bcrypt result) is concatenated. `passwordHash`'s format makes it non-injectable.
 
 ---
 
@@ -88,7 +91,7 @@ The function receives 5 form params: `name`, `username`, `email`, `password`, `r
 | Raw string concat into query | Yes |
 | Regex validation (partial — allows `@`, `.`) | Usually still exploitable |
 | Parameterized query (`?`) | No |
-| Field value is hashed before insertion | No — hash output is fixed-format |
+| Field value is hashed before insertion | No — hash output is fixed-format (`passwordHash`, not `password`, is the var in the INSERT) |
 | Field value from a prior parameterized query | Only if you can control what was stored (second-order) |
 
 If a field passes through a one-way transform (hash, HMAC, encode) before reaching the SQL string, it's not injectable regardless of what you submit.
