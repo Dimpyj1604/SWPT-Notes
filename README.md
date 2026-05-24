@@ -23,6 +23,7 @@ All content reflects publicly documented attack classes. No flags, no direct ans
 | 11 | [NoSQL Injection](./11-NoSQL-Injection/) | MongoDB operator injection, $where JS injection, boolean oracle, blind token exfil |
 | 12 | [Advanced Injections](./12-Advanced-Injections/) | wkhtmltopdf server-side XSS, LFI via file://, iframe SSRF, XPath blind boolean injection |
 | 13 | [LDAP Injection](./13-LDAP-Injection/) | Blind LDAP filter injection, OR-clause attribute exfiltration, boolean oracle |
+| 14 | [Advanced SQL Injection](./14-Advanced-SQL-Injection/) | PostgreSQL internals, psql/pgAdmin4, schema enumeration, advanced injection techniques |
 
 ---
 
