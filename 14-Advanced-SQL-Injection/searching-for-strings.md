@@ -68,10 +68,16 @@ The `user.getEmail()` value comes from a prior parameterized query. This is only
 
 ### 4. `/signup` INSERT (POST, AuthController.java)
 ```java
-String sql = "INSERT INTO users (name, username, email, password) VALUES ('"
-    + name + "', '" + username + "', '" + email + "', '" + hashedPassword + "')";
+// signupPOST params: name, username, email, password, repeatPassword
+String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+String sql3 = "INSERT INTO users (name, username, email, password) VALUES ('"
+    + name + "', '" + username + "', '" + email + "', '" + passwordHash + "')";
 ```
-All four fields go in raw — except `password` is **bcrypt-hashed first** (`BCrypt.hashpw()`). The hash output is always `$2a$10$<53 chars>` — fixed format, not injectable. The other three (`name`, `username`, `email`) are injectable via the signup form.
+The function receives 5 form params: `name`, `username`, `email`, `password`, `repeatPassword`.
+
+- `name`, `username`, `email` — concatenated raw into the INSERT, all injectable.
+- `password` — bcrypt-hashed before insertion (`passwordHash`). The hash output (`$2a$10$...`) is fixed-format and not injectable. However, `password` at least reaches the query (as the hash).
+- `repeatPassword` — only used for the `password.equals(repeatPassword)` equality check, then **discarded entirely**. It never reaches the INSERT query at all — cannot be used for exploitation.
 
 ---
 
