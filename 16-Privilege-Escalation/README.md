@@ -6,3 +6,4 @@ Covers privilege escalation techniques in web applications including prototype p
 
 - [Prototype Pollution (Node.js)](./prototype-pollution-nodejs.md) — CVE-2018-16491 node.extend, pollute Object.prototype via __proto__ in login body, bypass isAdmin check → admin panel
 - [Prototype Pollution → RCE](./prototype-pollution-rce.md) — lodash.merge 4.6.1, constructor.prototype bypass for __proto__ filter, pollute User.prototype.deviceIP → command injection via /ping
+- [Client-Side Prototype Pollution → XSS → CSRF](./client-side-prototype-pollution.md) — jquery-deparam pollutes Object.prototype.onerror, jQuery 3.5.1 script-loader sets onerror attr, admin bot promotes htb-stdnt via fetch("/admin.php?promote=2"), flag in Admin Info
