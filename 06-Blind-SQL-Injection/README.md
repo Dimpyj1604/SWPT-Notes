@@ -1,7 +1,17 @@
 # Blind SQL Injection
 
-MSSQL-flavored blind SQLi with a captcha gate that also turns out to be injectable. The path goes from bypassing the captcha to stacked queries, enabling `xp_cmdshell`, writing files to the webroot, and reading arbitrary files on the box.
+Extracting data and achieving RCE when the query result never appears in the response —
+boolean and time-based oracles, MSSQL schema enumeration, stacked-query escalation to
+`xp_cmdshell`, and NetNTLM capture via `xp_dirtree`.
+
+## Techniques
+
+- [Blind Oracle Types](./blind-oracle-types.md) — boolean vs time-based, bit-by-bit and
+  binary-search extraction, reducing request count
+- [MSSQL Techniques](./mssql-techniques.md) — `WAITFOR DELAY`, `OFFSET/FETCH` enumeration,
+  stacked queries, enabling `xp_cmdshell`, file read/write, `xp_dirtree` NetNTLM capture
 
 ## Labs
 
-- [Skills Assessment](./skills-assessment.md) — MSSQL time-based blind SQLi, captchaAnswer injection, xp_cmdshell RCE, webroot path discovery
+- [Skills Assessment](./skills-assessment.md) — MSSQL time-based blind SQLi, captchaAnswer
+  injection, xp_cmdshell RCE, webroot path discovery
